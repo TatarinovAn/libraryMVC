@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<style type="text/css">
+
+    body {
+
+        text-align: center;
+        font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+        text-rendering: optimizelegibility;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-text-size-adjust: none;
+        width: 100%;
+        min-height: 100vh;
+        background: rgb(204, 202, 212);
+        background: linear-gradient(45deg, rgba(173, 171, 171, 0.49) 37%, rgba(70, 176, 233, 0.3883928571428571) 100%);
+    }
+</style>
+<body>
+
+<h1>Книги библиотеки</h1>
+<p>
+
+</p>
+<form class="form" th:method="GET" th:action="@{/home}">
+    <input type="submit" th:value="'На главную'">
+</form>
+<p>
+
+</p>
+
+
+<div th:each="book : ${books}">
+    <a th:href="@{/books/{id}(id = ${book.getBookId()})}"
+       th:text="${book.getName() +', ' + book.getAuthor() + ', ' + book.getYearOfProduction()}"> book </a>
+</div>
+<br/>
+<hr/>
+
+<a th:href="@{/books/new}" th:text="'Добавить книгу'">Добавить книгу</a>
+<p>
+
+</p>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка пользователя</title>
+
+
+</head>
+<style type="text/css">
+
+    body {
+
+        text-align: center;
+        font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+        text-rendering: optimizelegibility;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-text-size-adjust: none;
+        width: 100%;
+        min-height: 100vh;
+        background: rgb(204, 202, 212);
+        background: linear-gradient(45deg, rgba(173, 171, 171, 0.49) 37%, rgba(70, 176, 233, 0.3883928571428571) 100%);
+    }
+
+    .form {
+        display: inline-block;
+    }
+
+</style>
+<body>
+<h1>Карточка пользователя</h1>
+<br/>
+<p th:text="'ФИО: ' + ${person.getName()}"> VALUE </p>
+<p th:text="'Год рождения: ' + ${person.getYearOfBirth()}">VALUE</p>
+<br/>
+
+<div th:if="${books.isEmpty()}">
+    <p>Человек пока не взял ни одной книги</p>
+    <hr/>
+</div>
+
+<div th:if="${!books.isEmpty()}">
+    <hr/>
+    <b>Книги:</b>
+    <br/>
+    <table th:each="book : ${books}">
+        <tr th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYearOfProduction()}">book</tr>
+    </table>
+    <hr/>
+</div>
+
+
+<!--<a th:href="@{/people}" th:text="Назад"> Назад </a>-->
+
+<form class="form" th:method="GET" th:action="@{/people}">
+    <input type="submit" th:value="'Назад'">
+</form>
+
+<form class="form" th:method="GET" th:action="@{/people/{id}/edit (id=${person.getPersonId()})}">
+    <input type="submit" th:value="'Редактировать'">
+</form>
+
+<form class="form" th:method="DELETE" th:action="@{/people/{id}(id=${person.getPersonId()})}" th:object="${person}">
+    <input type="submit" th:value="'Удалить'">
+</form>
+
+
+</body>
+</html>
