@@ -37,7 +37,7 @@ public class BookDAO {
 
 
     public void saveBook(Book book) {
-        jdbcTemplate.update("INSERT INTO Book (person_id, name, author, year_of_production) VALUES (null, ?, ?, ?)", book.getName(), book.getAuthor(), book.getYearOfProduction());
+       jdbcTemplate.update("INSERT INTO Book (person_id, name, author, year_of_production) VALUES (null, ?, ?, ?)", book.getName(), book.getAuthor(), book.getYearOfProduction());
     }
 
     public void update(Book updateBook, int bookId) {

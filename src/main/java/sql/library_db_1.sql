@@ -19,6 +19,9 @@ INSERT INTO book (person_id, name, author, year_of_production) VALUES
     (null, 'Изучаем Java', ' Сьерра Кэти, Бэйтс Берт', 2023);
 
 
+INSERT INTO person (name, year_of_birth) VALUES
+    ('Татаринов Антон Викторович', 1992);
+
 select * from person inner join book on person.person_id = book.person_id;
 
 

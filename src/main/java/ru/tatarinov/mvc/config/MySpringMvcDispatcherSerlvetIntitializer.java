@@ -22,6 +22,7 @@ public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotation
     }
 
     @Override
+
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
