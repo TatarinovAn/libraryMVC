@@ -33,7 +33,7 @@
 </p>
 
 <div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id = ${person.getPersonId()})}" th:text="${person.getName() +', ' + person.getYearOfBirth()}  "> user </a>
+    <a th:href="@{/people/{id}(id = ${person.getId()})}" th:text="${person.getName() +', ' + person.getYearOfBirth()}  "> user </a>
 </div>
 <br/>
 <hr/>

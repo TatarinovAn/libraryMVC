@@ -55,11 +55,11 @@
     <input type="submit" th:value="'Назад'">
 </form>
 
-<form class="form" th:method="GET" th:action="@{/people/{id}/edit (id=${person.getPersonId()})}">
+<form class="form" th:method="GET" th:action="@{/people/{id}/edit (id=${person.getId()})}">
     <input type="submit" th:value="'Редактировать'">
 </form>
 
-<form class="form" th:method="DELETE" th:action="@{/people/{id}(id=${person.getPersonId()})}" th:object="${person}">
+<form class="form" th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
     <input type="submit" th:value="'Удалить'">
 </form>
 

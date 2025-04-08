@@ -4,20 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ru.tatarinov.mvc.dao.BookDAO;
-import ru.tatarinov.mvc.dao.PersonDAO;
-import ru.tatarinov.mvc.model.Book;
-import ru.tatarinov.mvc.model.Person;
+import ru.tatarinov.mvc.models.Book;
+import ru.tatarinov.mvc.services.BooksService;
 
 
 @Component
 public class BookValidator implements Validator {
 
-    private final BookDAO bookDAO;
+    private final BooksService booksService;
 
     @Autowired
-    public BookValidator(BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
+    public BookValidator(BooksService booksService) {
+        this.booksService = booksService;
     }
 
 
@@ -30,7 +28,7 @@ public class BookValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Book book = (Book) o;
 
-        if (bookDAO.showBook(book.getName()).isPresent()) {
+        if (booksService.getBookFindByName(book.getName()).isPresent()) {
             errors.rejectValue("name", "500", "Книга с таким названием уже существует");
         }
     }
